@@ -1,0 +1,61 @@
+// IMPLEMENTACIÓN COLA DINÁMICA CIRCULAR
+#include <stdio.h>
+#inclide <stdbool.h>
+
+#define QNULL NULL
+#typedef int tItemQ;
+#typedef Struct tNodeQ *tPosQ;
+struct tNode {
+                tItem data;
+                tPosQ next;
+}; typedef tPOsq tQueue;
+
+void createEmptyQueue (tQueue *Q){ // creamos una nueva cola, la cual estará inicialmente vacía
+  *Q = QNULL;
+}
+
+void createNode (tPosQ *p){  // función para crear los nodos de la cola
+  *p = malloc(sizeof(struct tNodeQ));
+  return ((*p) != QNULL);
+}
+
+bool isEmptyQueue (tQueue Q){ // booleano para comprobar si la cola está o no está vacía
+  return Q == QNULL;
+}
+
+bool enqueue (tQueue *Q) { // función para añadir elementos a la cola
+  tPosQ p;
+
+  if (!createNode(&p)) {
+        return false;
+  }
+   else {
+            p -> data = d;
+            p -> next = QNULL;
+
+            if (isEmptyQueue (*Q)) {
+                    p -> next = p;
+            }
+          *Q = p;
+          return true;
+   }
+}
+
+tItemQ front (tQueue Q) {  // devuelve el elemento que está más adelante en la cola
+  return Q -> next -> data;
+}
+
+void dequeue (tQueue *Q) { // función para eliminar elemenotos de la cola
+  tPosQ p;
+
+  if ((*Q) -> next == *Q) {
+        *Q = QNULL;
+  }
+    else {
+            p = (*Q) -> next;
+            (*Q) -> next = p -> next;
+    }
+free(p);
+}
+
+
