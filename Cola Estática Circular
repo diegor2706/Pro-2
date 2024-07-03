@@ -1,2 +1,40 @@
 #define QMAX 100 // el tamaño máximo de la cola dependerá de lo que se nos dicte en el enunciado del ejercicio
-typedef
+typedef int tItemQ;
+typedef struct Queue {
+                        tItemQ data[MAX];
+                        int front, rear;
+} tQueue;
+
+void createEmptyQueue (tQueue *Q) {
+    Q -> front = 0;
+    Q -> rear = QMAX - 1;
+}
+
+int addOne (int i) { // FUNCIÓN AUXILIAR
+ if (i = QMAX - 1){ // si la cola está llena devuelve 0. la cola estaría llena porque la i sería igual a la última posición de la cola
+      return 0;
+  } else return ++i;
+}
+
+bool isEmptyQueue (tQueue Q) { // booleano para comprobar que la cola está vacía
+    return Q.front == addOne(Q.rear);
+}
+
+void dequeue (tQueue *Q) { // función para eleminiar un elemento de la cola
+    Q -> front == addOne(Q -> front);
+}
+
+bool isFullQueue (tQueue *Q) { // función auxiliar para comprobar si la cola está llena
+  return (Q.front == addOne(addOne(Q.rear); // comprobación de la cola llena en base a la teoría.
+}
+
+bool enqueue (tItem d; tQueue *Q) { // función para añadir elememtos a la cola
+    if (isFullQueue(*Q)){ // si la cola está llena, no puede añadir un nuevo elemento
+        return false;
+  }
+    else {
+            Q -> rear == addOne (Q -> rear);
+            Q -> data [Q -> rear] = d;
+            return true;
+  }
+}
