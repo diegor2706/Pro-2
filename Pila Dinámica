@@ -1,0 +1,14 @@
+#define SNULL NULL
+typedef int tItemS;
+typedef struct tNodeS *tPosS;
+
+struct tNodeS {
+                tItemS data;
+                tPosS next;
+};
+typedef tPoss tStack;
+
+void createEmptyStack (tStack *Stack) {
+      *Stack = SNULL;
+}
+
