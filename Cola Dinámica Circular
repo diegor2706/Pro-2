@@ -45,17 +45,17 @@ tItemQ front (tQueue Q) {  // devuelve el elemento que está más adelante en la
   return Q -> next -> data;
 }
 
-void dequeue (tQueue *Q) { // función para eliminar elemenotos de la cola
+void dequeue (tQueue *Q) { // función para eliminar elementos de la cola
   tPosQ p;
 
-  if ((*Q) -> next == *Q) {
+  if ((*Q) -> next == *Q) { // si la cola solo tiene un elemento, al eliminarlo queda vacía
         *Q = QNULL;
   }
     else {
             p = (*Q) -> next;
             (*Q) -> next = p -> next;
-    }
-free(p);
+  }
+    free(p);
 }
 
 
