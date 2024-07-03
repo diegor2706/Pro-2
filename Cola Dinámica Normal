@@ -1,7 +1,7 @@
 // IMPLEMENTACIóN COLA DINÁMICA
 # define QNULL NULL
-# typedef int tItemQ;
-# typedef struct tNodeQ *tPosQ;
+typedef int tItemQ;
+typedef struct tNodeQ *tPosQ;
 struct tNodeQ {
                 tItemQ item;
                 tPosQ rear;
