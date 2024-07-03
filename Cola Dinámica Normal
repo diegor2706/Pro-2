@@ -49,9 +49,9 @@ bool enqueue (tItemQ d, tQueue *Q){
     }
     else {
           p -> item = d;
-          p -> next = QNULL;
+          p -> next = QNULL; // inizializa
 
-          if (Q-> front == QNULL){
+          if (Q-> front == QNULL){ // mira si la cola está vacía
                 Q -> front = p;
           }
           else  {
