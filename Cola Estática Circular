@@ -1,0 +1,2 @@
+#define QMAX 100 // el tamaño máximo de la cola dependerá de lo que se nos dicte en el enunciado del ejercicio
+typedef
