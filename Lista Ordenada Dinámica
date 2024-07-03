@@ -1,0 +1,143 @@
+#define LNULL NULL 
+typedef int tItemL; 
+typedef struct tNode* tPosL;
+struct tNode{
+    tItemL data;
+    tPosL next;
+};
+typedef tPosL tList;
+
+void createEmptyList (tList *L) {
+    *L = LNULL;
+}
+
+bool isEmptyList(tList L) {
+    return L == LNULL;
+}
+
+bool createNode (tPosL *p){
+    *p = malloc(sizeof(struct tNode));
+    return *p != LNULL;
+}
+
+void deleteAtPosition (tPosL p, tList * L) {
+    tPosL q;
+    if (p == *L){
+        *L = (*L) -> next;
+    } else if (p -> next == LNULL){
+        for (q = *L; q -> next -> next != p ; q = q -> next);
+        q -> next = LNULL;
+    } else {
+        q = p -> next;
+        p -> data = q -> data;
+        p -> next = q -> next;
+        p = q;
+    }
+      free(p);
+}
+
+bool insertItem (tItemL d, tList *L) {
+   tPosL q, p; 
+   if (!createNode(&q)) {
+     return false; 
+   } else {
+     q -> data = d; 
+     q -> next = LNULL; 
+     if (*L == LNULL) {                       //Lista vacía
+       *L = q; 
+     } else if (d < (*L) -> data) {           //Primera posicion
+       q -> next = *L; 
+       *L = q; 
+     } else {
+       p = findPosition (*L, d);
+       q -> next = p -> next;
+       p -> next = q; 
+     }
+}
+}
+
+tPosL findPosition (tList L, tItemL d) {
+   tPosL p; 
+   p = L; 
+   while ((p -> next != LNULL) && (p-> next -> data < d)){
+        p = p -> next;
+   } return p; 
+}
+
+tPosL findItem (tItemL d, tList L) {
+   tPosL p; 
+   if (isEmptyList(L)) {
+     return LNULL; 
+   } else {
+     for (p = L; (p != LNULL) && ( p-> data < d); p = p-> next);
+       return p; 
+     } 
+}
+
+tPosL next (tPosL p, tList L) {
+   return p -> next;
+}
+
+void deleteList (tList *L) {
+    tPosL p;
+    while (!isEmptyList(*L)) {
+            p = *L;
+            *L = (*L) -> next;
+            free (p);
+    }
+}
+
+void updateItem (tItemL d, tPosL p, tList *L) {
+     p -> data = p;
+}
+
+tPosL first (tList L) {
+    return L;
+}
+
+tPosL previous (tPosL p, tList L) {
+    tPosL q;
+    if (p == L) {
+      return LNULL;
+ }
+  else {
+         for (q = L; q -> next != p; q = q -> next) {
+            return q;
+  }
+}
+
+tPosL last (tList L) {
+    tPosL p;
+    for (p = L; p -> next != LNULL, p = p -> next){
+      return p;
+  }
+}
+
+bool copyList (tList L, tList *M) {
+    tPosL p, q, r;
+    bool result = true;
+    createEmptyList (M);
+
+    if (!isEmptyList(L)) {
+    p = L;
+    while(( p != LNULL) && (createNode(&r))) {
+          r -> data = p -> data;
+          r -> next = LNULL;
+
+          if (p == L) {
+                        *M = r;
+                        q = r;
+                      } 
+                        else {
+                                q -> next = r;
+                                q = r;
+                             }
+                          p = p -> next;
+
+            } if (p != LNULL) {
+                result = false
+                deleteList (M);
+              }
+        }
+    return result;
+}
