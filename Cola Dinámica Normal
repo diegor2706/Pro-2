@@ -35,7 +35,7 @@ void dequeue (tPosQ *Q){
     p = Q -> front;
     Q -> front = p -> next;
 
-    if (Q -> front == QNULL){
+    if (Q -> front == QNULL){ // comprobamos si la cola está vacía tras el desplazamiento
           Q -> rear = QNULL;
       }
     free (p);
