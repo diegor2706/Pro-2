@@ -8,7 +8,40 @@ struct tNodeS {
 };
 typedef tPoss tStack;
 
-void createEmptyStack (tStack *Stack) {
+void createEmptyStack (tStack *Stack) { // creamos la pila vacía
       *Stack = SNULL;
 }
 
+bool isEmptyStack (tStack *Stack) {
+    return Stack == SNULL;
+}
+
+tItem peek (tStack Stack) {
+    return Stack.data;
+}
+
+tItem createNode (tPosS *p) {
+    *p = malloc(sizeof(struct tNode)) {
+    return (*p != SNULL);
+  }
+}
+
+void pop (tStack *Stack) {
+    tPosS aux;
+    aux = *Stack;
+    *Stack = (*Stack) -> next;
+    free (aux);
+}
+
+void push (tItem d, tStack *Stack) {
+    tPosS aux;
+    if (!createNode(aux) {
+          return false;
+    }
+      else {
+              aux -> data = d;
+              aux -> next = *Stack;
+              *Stack = aux;
+              return true;
+           }
+}
