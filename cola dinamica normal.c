@@ -1,9 +1,4 @@
 // IMPLEMENTACIóN COLA DINÁMICA
-#include <stdio.h>
-#include <stdbool.h>
-#include <stdlib.h>
-
-
 # define QNULL NULL
 # typedef int tItemQ;
 # typedef struct tNodeQ *tPosQ;
