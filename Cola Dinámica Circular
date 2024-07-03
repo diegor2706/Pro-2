@@ -3,8 +3,8 @@
 #inclide <stdbool.h>
 
 #define QNULL NULL
-#typedef int tItemQ;
-#typedef Struct tNodeQ *tPosQ;
+typedef int tItemQ;
+typedef Struct tNodeQ *tPosQ;
 struct tNode {
                 tItem data;
                 tPosQ next;
