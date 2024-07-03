@@ -1,0 +1,107 @@
+#include <stdbool.h>
+#define LNULL -1
+#define MAX 1000 // el número de elementos de la lista cambia en base al enunciado
+
+typedef int tItemL;
+typedef int tPosL;
+
+typedef struct {
+                  tItemL data[MAX];
+                  tPosL lastPos;
+} tList;
+
+void createEmptyList (tList *L) {
+    L -> lastPos = LNULL;
+}
+
+bool isEmptyList (tList L) {
+    return L.lastpos == LNULL;
+}
+
+void updateItem (tItem d, tPosL p, tList *L) {
+  L -> data[p] = d;
+}
+
+bool insertItem(tItemL d, tLIst *L){
+   tPosL i;
+   if(L -> lastPos == MAX-1){   //Comprobar si el array está lleno
+      return false; 
+   } else {
+      if(isEmptyList(*L) || d > L -> data[L->lastPos]) {
+         L->lastPos++;
+         L->data[L->lastPos]=d;
+      } else {
+         L->lastPos++;
+                                                              //Buscamos la posición donde debemos insertar                                                        
+         for(i=L->LastPos;i>0 && d<L->data[i-1];i--){         //moviendo hacia la derecha los elementos de la lista que 
+            L->data[i]=L->data[i-1];                          //son mayores que d hasta encontrar la posición donde hay que hacer la inserción
+         }                                                    
+         L->data[i]=d;
+      }
+         return true; 
+   }
+}
+
+tPosL findItem (tItemL d, tList L) {
+  tPosL p; 
+  if(L.LastPos == LNULL){ // si la lista está vacía
+    return LNULL; 
+  } else if ((d < L.data[0]) || (d > L.data[L.lastPos])){
+    return LNULL; 
+  } else {
+    for( p = 0; (p < L.lastPos) && (L.data[p] < d); p++); //recorrer lista
+    //Comprobar si encontramos el elemento
+    if(L.data[p] == d){ 
+      return p; 
+    } else return LNULL;
+  }
+}
+
+bool copyList ( tList L, tList *M) {
+  tPosL p;
+  createEmptyList (M);
+
+  for (p = 0; p <= lastPos; p++) {
+       M -> data[p] = L -> data[p];
+  }
+  M -> lastPos = L -> lastPos;
+  return true;
+}
+
+tItemL getItem (tPosL p, tListL L) {
+ return L.data[p];
+}
+
+tPostL first (tList L) {
+ return L.lastPos;
+}
+
+tPosL previous (tList L) {
+ return --p;
+}
+
+tPosL next ( tPosL p, tList L) {
+ if (p == L.lastPos) {
+      return LNULL;
+    }
+  else return ++p;
+}
+
+void deleteAtPosition (tList *L) {
+    tPosL i;
+    
+    L -> lastPos--;
+    for ( i = P; i <= L -> lastPos; ++i){
+          L -> data[i] = L -> data[i+1];
+  }
+}
+
+void deleteList (tList *L) {
+    L -> lastPos = LNULL;
+}
+
+
+
+
+
+   
