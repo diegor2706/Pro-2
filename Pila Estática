@@ -1,0 +1,38 @@
+#define MAX 25
+#define SNULL -1
+
+typedef int tPosS;
+typedef int tItemS;
+typedef Struct {
+                  tItemS data[MAX];
+                  tPosS top;
+} tStack;
+
+void createEmptyStack (tStack *Stack) {
+    Stack -> top = SNULL;
+}
+
+bool isEmptyStack (tStack Stack) {
+    return Stack.top == SNULL;
+}
+
+tItemS peek (tStack Stack) {
+    return Stack.data[Stack.top];
+}
+
+bool push (tItemS d, tStack Stack) {
+    if ((*Stack) -> top == MAX - 1) {
+          return false; // la pila está llena
+
+    } else { 
+              (*Stack).top++;
+              (*Stack).data[Stack -> top] = d;
+              return = true;
+           }
+}
+
+void pop (Stack *Stack) {
+        (*Stack).top--;
+}
+
+  
